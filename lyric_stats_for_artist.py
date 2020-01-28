@@ -125,6 +125,58 @@ def remove_control_characters(words):
     return words
 
 
+def produce_stats(tracks_df, artists):
+
+    name_list = []   
+    mean_list = []   
+    max_list = []   
+    min_list = []   
+    std_dev_list = []
+    var_list = []
+
+    # # Loop throught the artists and check some statistics
+    for artist in artists:
+
+        # # remove any trailing spaces
+        artist = artist.strip()
+
+        name_list.append(artist)
+        # # Filter out rows with matching artist
+        true_flag =  tracks_df['Artist'] == artist
+        df_matches = tracks_df[true_flag]       
+   
+        # # get the mean value of words
+        mean_value = df_matches['Word_Count'].mean()
+        mean_list.append(mean_value)
+        print (f"The mean value for {artist}'s lyrics is {mean_value}")  
+
+        # # get the max value of words
+        max_value = df_matches['Word_Count'].max()
+        max_list.append(max_value)
+        print (f"The max value for {artist}'s lyrics is {max_value}")
+
+        # # get the min value of words
+        min_value = df_matches['Word_Count'].min()
+        min_list.append(min_value)
+        print (f"The min value for {artist}'s lyrics is {min_value}")
+
+        # # create a pandas series
+        pd_series = df_matches.Word_Count
+
+        # # get the standard deviation value of words
+        std_dev_value = pd_series.std()
+        std_dev_list.append(std_dev_value)
+        print (f"The standard deviation for {artist}'s lyrics is {std_dev_value}")
+
+        # # get the variation value of words
+        var_value = pd_series.var()
+        var_list.append(var_value)
+        print (f"The variation for {artist}'s lyrics is {var_value}")
+
+        print (" ")
+
+
+
 def main(argprser):
 
     client_id = '29a46e1c31b74e339f7f4dd1128b6314'
@@ -175,7 +227,10 @@ def main(argprser):
         print (" ")
         print (" ")
 
-    
+
+    # # Produce some stats
+    produce_stats(tracks_df, list_for_stats)
+   
 
 if __name__ == '__main__':
     
