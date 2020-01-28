@@ -175,6 +175,34 @@ def produce_stats(tracks_df, artists):
 
         print (" ")
 
+    # # If more than 1 artist than plot details on the graph
+    if (len(artists) > 1):
+        # # Plot average
+        plot_stats(name_list, mean_list, "Average number of words in lyrics")
+
+        # # Max word counts
+        plot_stats(name_list, max_list, "Maximum number of words in lyrics")
+
+        # # Min word counts
+        plot_stats(name_list, min_list, "Minimum number of words in lyrics")
+
+
+def plot_stats(name_list, count_list, plot_title):
+
+    # # set the ypos and width of each bar and their positions
+    x_pos = []
+    width = 0.3
+    for x in range(0, len(name_list)):
+        x_pos.append(x)
+
+    plt.bar(x_pos, count_list, width=width)
+    plt.grid(color='#95a5a6', linestyle='--', linewidth=1, axis='y', alpha=0.7)
+    plt.xticks(x_pos, name_list)
+ 
+    plt.title(plot_title)
+    plt.xlabel('Artist')
+    plt.ylabel('Word Count')
+    plt.show()
 
 
 def main(argprser):
@@ -230,7 +258,9 @@ def main(argprser):
 
     # # Produce some stats
     produce_stats(tracks_df, list_for_stats)
-   
+
+
+    
 
 if __name__ == '__main__':
     
@@ -244,4 +274,3 @@ if __name__ == '__main__':
     #python lyric_stats_for_artist.py "Linkin Park"     --> Should produce stats on console
     #python lyric_stats_for_artist.py "Linkin Park,Stormzy,Adele,Sam Smith" --> Should produce stats on console and pop up graphs 
     #python lyric_stats_for_artist.py "Linkin Park,Stormzy,Adele,ZlaXlah" --> Should produce stats on console and pop up graphs (minus ZlaXlah as it does not exist)
-    
