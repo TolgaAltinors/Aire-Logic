@@ -18,10 +18,15 @@ The following python libraries need to be present for the script to execute succ
 Numpy should be installed as part of pandas.
 
 1 - spotipy     (pip install spotipy)
+
 2 - pandas      (pip install pandas)
+
 3 - numpy       (pip install numpy)
+
 4 - requests    (pip install requests)
+
 5 - matplotlib  (pip install matplotlib)
+
 
 -----------------------------------------------------------------------------------------
 Running of the script
@@ -29,11 +34,14 @@ Running of the script
 Below are examples of how the script can be run.
 
 python lyric_stats_for_artist.py "Linkin Park"
+
   --> (Should produce stats on console)
 
 python lyric_stats_for_artist.py "Linkin Park,Stormzy,Adele,Sam Smith"
+
   --> (Should produce stats on console and pop up graphs)
 
 python lyric_stats_for_artist.py "Linkin Park,Stormzy,Adele,ZlaXlah"
+
   --> (Should produce stats on console and pop up graphs, minus ZlaXlah as it does not exist)
 
