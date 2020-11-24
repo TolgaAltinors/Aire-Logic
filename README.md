@@ -1,4 +1,4 @@
-# Aire-Logic
+# Spotify API test
 Test on API's
 
 The script is written in Python 3 and it is a command line application.
