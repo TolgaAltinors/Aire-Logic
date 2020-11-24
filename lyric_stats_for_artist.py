@@ -207,8 +207,8 @@ def plot_stats(name_list, count_list, plot_title):
 
 def main(argprser):
 
-    client_id = '29a46e1c31b74e339f7f4dd1128b6314'
-    client_secret = '3d27c8978264434e97f7c76b845980ed'
+    client_id = ''
+    client_secret = ''
     
     # # parse artist details 
     artists = sys.argv[1].split(',')
